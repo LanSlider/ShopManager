@@ -52,9 +52,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
-    <Compile Include="Services\Products\IProductService.cs" />
-    <Compile Include="Services\Products\ProductService.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShopManager.Entities\ShopManager.Entities.csproj">
@@ -62,10 +61,7 @@
       <Name>ShopManager.Entities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\Products\Mapping\" />
-    <Folder Include="Services\Products\Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

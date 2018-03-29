@@ -4,16 +4,18 @@ using ShopManager.Services.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace ShopManager.Controllers
 {
-    public class HomeController : Controller
+    [RoutePrefix("api")]
+    public class StoreController : ApiController
     {
         private UnitOfWork _uow = null;
 
-        public HomeController()
+        public StoreController()
         {
             _uow = new UnitOfWork();
         }
@@ -23,12 +25,6 @@ namespace ShopManager.Controllers
             var listStore = _uow.StoreRepository.GetAll().ToList();
             var listStoreInfo = AutoMapper.Mapper.Map<List<Store>, List<StoreInfo>>(listStore);
             return listStoreInfo;
-        }
-
-        public ActionResult Index()
-        {
-            var listStore = GetAllStore();
-            return View(listStore);
         }
     }
 }

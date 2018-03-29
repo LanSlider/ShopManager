@@ -1,18 +1,21 @@
 ﻿using ShopManager.Entities.Entities;
 using ShopManager.Models;
 using ShopManager.Services.UnitOfWork;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace ShopManager.Controllers
 {
     [RoutePrefix("api")]
-    public class ProductController : ApiController
+    public class WebAPIController : ApiController
     {
         private UnitOfWork _uow = null;
 
-        public ProductController()
+        public WebAPIController()
         {
             _uow = new UnitOfWork();
         }
@@ -27,10 +30,9 @@ namespace ShopManager.Controllers
             foreach (var item in listProductID)
             {
                 listProducts.Add(AutoMapper.Mapper.Map<Product, ProductInfo>(_uow.ProductRepository.Get(item.ProductId)));
-            }
+            }            
             return listProducts;
         }
-
 
         [HttpPost]
         public void CreateProduct([FromBody] ProductInfo productInfo)
@@ -41,18 +43,5 @@ namespace ShopManager.Controllers
             //Task task = new Task(() => _uow.CommitAsync());          
         }
 
-
-        /*
-        [Route("products")]
-        [HttpGet]
-        public IHttpActionResult GetProducts([FromUri])
-        {
-
-        }
-
-        public ProductController()
-        {
-            //_productService = ;
-        }*/
     }
 }

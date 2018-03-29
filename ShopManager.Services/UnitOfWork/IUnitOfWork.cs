@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace ShopManager.Services.UnitOfWork
 {
-    interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         IRepository<Product> ProductRepository { get; }
         IRepository<Store> StoreRepository { get; }
+        IRepository<StoreProductMap> StoreProductRepository { get; }
+
         void Commit();
         Task CommitAsync();
     }

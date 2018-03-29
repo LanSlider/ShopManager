@@ -8,11 +8,12 @@ using ShopManager.Services.Repository;
 
 namespace ShopManager.Services.UnitOfWork
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         EntitiesConnection _db;
         IRepository<Product> _productRepository;
         IRepository<Store> _storeRepository;
+        IRepository<StoreProductMap> _storeProductRepository;
 
         public IRepository<Product> ProductRepository
         {
@@ -34,6 +35,16 @@ namespace ShopManager.Services.UnitOfWork
             }
         }
 
+        public IRepository<StoreProductMap> StoreProductRepository
+        {
+            get
+            {
+                if (_storeProductRepository == null)
+                    _storeProductRepository = new Repository<StoreProductMap>(_db);
+                return _storeProductRepository;
+            }
+        }
+
         public UnitOfWork()
         {
             _db = new EntitiesConnection();
@@ -41,7 +52,7 @@ namespace ShopManager.Services.UnitOfWork
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _db.Dispose();
         }
 
         public void Commit()

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManager", "ShopManager\ShopManager.csproj", "{9F728F22-77EC-4A79-B602-6BDDC8860601}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManager.Web", "ShopManager\ShopManager.Web.csproj", "{9F728F22-77EC-4A79-B602-6BDDC8860601}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManager.Services", "ShopManager.Services\ShopManager.Services.csproj", "{95721D43-DA4B-411A-A7F1-FEA2ACCDC980}"
 EndProject
