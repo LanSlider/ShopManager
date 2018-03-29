@@ -1,5 +1,6 @@
-﻿using ShopManager.Services.Services.Products;
-using ShopManager.Services.Services.Products.Filters;
+﻿using ShopManager.Entities.Entities;
+using ShopManager.Models;
+using ShopManager.Services.Services.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,9 @@ namespace ShopManager.Controllers
     public class ProductController : ApiController
     {
         IProductService _productService;
+
+       
+        StoreInfo ranfd = AutoMapper.Mapper.Map<Store, StoreInfo>(new Store { });
 
         [Route("products")]
         [HttpGet]
