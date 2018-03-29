@@ -9,40 +9,71 @@
     }
 </style>
 
-<h2>Компании</h2>
 
+
+@model List<ShopManager.Models.StoreInfo>
+    <br />
     <table>
-        <caption>
-            Список компаний
-        </caption>
+        <caption>Список магазинов</caption>
         <tr>
             <th>Идентификатор</th>
-            <th>Имя компании</th>
-            <th>Работников, чел.</th>
-            <th>Деятельность</th>
-            <th>Организационно-правовая форма</th>
+            <th>Наименование</th>
+            <th>Адрес</th>
+            <th>Режим работы</th>
+            <th></th>
             <th></th>
             <th></th>
         </tr>
-        
+        @foreach (ShopManager.Models.StoreInfo company in Model)
+        {
             <tr>
-                <th>sdfs</th>
-                <th>sdfsd</th>
-                <th>sdfs</th>
-                <th>sdfsdf</th>
-                <th>sdfsdf</th>
-                <th>
-                    <a href="/Company/EditCompany?id="><input type="submit" value="Редактировать" /></a>
+                <th>@company.Id</th>
+                <th>@company.Name</th>
+                <th>@company.Address</th>
+                <th>@company.OpeningHours</th>
+                <th>                                        
+                    <input type="button" name="submit" id="@company.Id" value="Перейти к товарам магазина!" onClick="GetAllProduct(@company.Id)">                
                 </th>
                 <th></th>
+                <th></th>
             </tr>
-        
+        }
     </table>
-    <div class="bot">
-        <center>
-            <a href="/Company/AddCompany"><input type="submit" value="Добавить" /></a>
-            <a href="/Company/AllDel"><input type="submit" value="Удалить все" /></a>
-        </center>
-    </div>
 
+    <br />
 
+   <div id="productTable"></div>
+
+<script type="text/javascript">
+    
+    function GetAllProduct(id) {
+
+        $.ajax({
+            url: '/api/store/' + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                WriteResponse(data, id); 
+            },
+            error: function (x, y, z) {
+                alert(x + '/n' + y + '/n' + z);
+            }
+
+        });
+       
+    }
+
+    function WriteResponse(data, id) {
+        var strResult = "<table><caption>Список товаров " + id + "-го магазина</caption><tr><th>Идентификатор</th><th>Наименование</th><th>Описание</th></tr>";
+        $.each(data, function (index, data) {
+            strResult += "<tr><td>" + data.Id + "</td><td>" + data.Name + "</td><td>" + data.Description + "</td>";
+        });
+        strResult += "</table>";
+
+        $("#productTable").html(strResult);
+    }
+       
+        
+
+    
+</script>

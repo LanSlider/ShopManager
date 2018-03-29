@@ -28,6 +28,7 @@ namespace ShopManager.Controllers
         public ActionResult Index()
         {
             var listStore = GetAllStore();
+            Redirect("/");
             return View(listStore);
         }
     }

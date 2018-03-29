@@ -17,21 +17,6 @@ namespace ShopManager.Controllers
             _uow = new UnitOfWork();
         }
 
-        [Route("store")]
-        [HttpGet]
-        public List<ProductInfo> GetAllProduct(int id)
-        {
-            var listProductID = _uow.StoreProductRepository.GetAll().ToList().Where(x => x.StoreId == id);
-            List<ProductInfo> listProducts = new List<ProductInfo>();
-            var listProductInfo = _uow.ProductRepository.GetAll().ToList();
-            foreach (var item in listProductID)
-            {
-                listProducts.Add(AutoMapper.Mapper.Map<Product, ProductInfo>(_uow.ProductRepository.Get(item.ProductId)));
-            }
-            return listProducts;
-        }
-
-
         [HttpPost]
         public void CreateProduct([FromBody] ProductInfo productInfo)
         {
