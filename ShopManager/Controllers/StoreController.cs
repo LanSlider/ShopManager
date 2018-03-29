@@ -20,14 +20,14 @@ namespace ShopManager.Controllers
             _uow = new UnitOfWork();
         }
 
-        [Route("store")]
+        /*[Route("store")]
         [HttpGet]
         public List<StoreInfo> GetAllStore()
         {
             var listStore = _uow.StoreRepository.GetAll().ToList();
             var listStoreInfo = AutoMapper.Mapper.Map<List<Store>, List<StoreInfo>>(listStore);
             return listStoreInfo;
-        }
+        }*/
 
         
         [HttpGet]

@@ -24,20 +24,6 @@ namespace ShopManager.Controllers
             _uow.ProductRepository.Add(product);
             _uow.Commit();
             //Task task = new Task(() => _uow.CommitAsync());          
-        }
-
-
-        /*
-        [Route("products")]
-        [HttpGet]
-        public IHttpActionResult GetProducts([FromUri])
-        {
-
-        }
-
-        public ProductController()
-        {
-            //_productService = ;
-        }*/
+        }       
     }
 }
