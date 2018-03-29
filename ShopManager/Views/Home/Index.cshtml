@@ -32,7 +32,7 @@
                 <th>@company.Address</th>
                 <th>@company.OpeningHours</th>
                 <th>                                        
-                    <input type="button" name="submit" id="@company.Id" value="Перейти к товарам магазина!" onClick="GetAllProduct(@company.Id)">                
+                    <input type="button" name="submit" id="@company.Id" value="Перейти к товарам магазина" onClick="GetAllProduct(@company.Id)">                
                 </th>
                 <th></th>
                 <th></th>
@@ -45,7 +45,7 @@
    <div id="productTable"></div>
 
 <script type="text/javascript">
-    
+   
     function GetAllProduct(id) {
 
         $.ajax({
@@ -58,9 +58,7 @@
             error: function (x, y, z) {
                 alert(x + '/n' + y + '/n' + z);
             }
-
-        });
-       
+        });      
     }
 
     function WriteResponse(data, id) {
@@ -71,9 +69,5 @@
         strResult += "</table>";
 
         $("#productTable").html(strResult);
-    }
-       
-        
-
-    
+    }                  
 </script>
